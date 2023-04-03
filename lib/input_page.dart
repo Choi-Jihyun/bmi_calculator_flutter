@@ -33,6 +33,7 @@ class _InputPageState extends State<InputPage> {
   //   }
   //}
   Gender? selectedGender;
+  int height = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -91,16 +92,45 @@ class _InputPageState extends State<InputPage> {
             Expanded(
                 child: ReusableCard(
               cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('HEIGHT'),
+                  Text(
+                    'HEIGHT',
+                    style: inactiveCardText,
+                  ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
-                        '180',
-                        style: kReusableTextStyle,
-                      )
+                        height.toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      Text(' CM')
                     ],
                   ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      inactiveTrackColor: kInactiveColor,
+                      activeTrackColor: Colors.white,
+                      thumbColor: kBottomContainerColor,
+                      overlayColor: Color(0x29EB1555),
+                      thumbShape:
+                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                      overlayShape:
+                          RoundSliderOverlayShape(overlayRadius: 30.0),
+                    ),
+                    child: Slider(
+                        value: height.toDouble(),
+                        min: 120.0,
+                        max: 220.0,
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        }),
+                  )
                 ],
               ),
             )),
