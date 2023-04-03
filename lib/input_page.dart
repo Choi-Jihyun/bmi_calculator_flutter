@@ -2,14 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
-
-const bottomContainerHeight = 80.0;
-const appBarColor = Color(0xFF1E1F28);
-const inactiveCardColor = Color(0xff111328);
-const activeCardColor = Color(0xff1d1e33);
-//const inactiveCardText = Color(0xFF8D8E98);
-//const activeCardText = Colors.white;
-const bottomContainerColor = Color(0xffeb1555);
+import 'constants.dart';
 
 enum Gender { male, female }
 
@@ -46,9 +39,10 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('BMI CALCULATOR'),
-          backgroundColor: appBarColor,
+          backgroundColor: kAppBarColor,
         ),
         body: Column(
+          //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
               child: Row(
@@ -61,11 +55,14 @@ class _InputPageState extends State<InputPage> {
                         });
                       },
                       color: selectedGender == Gender.male
-                          ? activeCardColor
-                          : inactiveCardColor,
-                      cardChild: const IconContent(
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
+                      cardChild: IconContent(
                         iconName: FontAwesomeIcons.mars,
                         iconText: 'MALE',
+                        iconTextStyle: selectedGender == Gender.male
+                            ? activeCardText
+                            : inactiveCardText,
                       ),
                     ),
                   ),
@@ -77,18 +74,36 @@ class _InputPageState extends State<InputPage> {
                         });
                       },
                       color: selectedGender == Gender.female
-                          ? activeCardColor
-                          : inactiveCardColor,
-                      cardChild: const IconContent(
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
+                      cardChild: IconContent(
                         iconName: FontAwesomeIcons.venus,
                         iconText: 'FEMALE',
+                        iconTextStyle: selectedGender == Gender.female
+                            ? activeCardText
+                            : inactiveCardText,
                       ),
                     ),
                   )
                 ],
               ),
             ),
-            Expanded(child: const ReusableCard()),
+            Expanded(
+                child: ReusableCard(
+              cardChild: Column(
+                children: [
+                  Text('HEIGHT'),
+                  Row(
+                    children: [
+                      Text(
+                        '180',
+                        style: kReusableTextStyle,
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            )),
             Expanded(
               child: Row(
                 children: const [
@@ -100,7 +115,7 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
             Container(
-              color: bottomContainerColor,
+              color: kBottomContainerColor,
               margin: EdgeInsets.only(top: 10.0),
               height: 80.0,
               //width: double.infinity,
