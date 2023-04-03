@@ -11,6 +11,8 @@ const activeCardColor = Color(0xff1d1e33);
 //const activeCardText = Colors.white;
 const bottomContainerColor = Color(0xffeb1555);
 
+enum Gender { male, female }
+
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
 
@@ -19,28 +21,25 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColor = inactiveCardColor;
-  Color femaleCardColor = inactiveCardColor;
-
-  void updateColor(int gender) {
-    if (gender == 1) {
-      if (maleCardColor == inactiveCardColor) {
-        maleCardColor = activeCardColor;
-        print(maleCardColor);
-        femaleCardColor = inactiveCardColor;
-      } else {
-        maleCardColor = inactiveCardColor;
-      }
-    }
-    if (gender == 2) {
-      if (femaleCardColor == inactiveCardColor) {
-        femaleCardColor = activeCardColor;
-        maleCardColor = inactiveCardColor;
-      } else {
-        femaleCardColor = inactiveCardColor;
-      }
-    }
-  }
+  // Color maleCardColor = inactiveCardColor;
+  // Color femaleCardColor = inactiveCardColor;
+  //
+  // void updateColor(Gender selectedGender) {
+  //   if (selectedGender == Gender.male) {
+  //     maleCardColor = activeCardColor;
+  //     femaleCardColor = inactiveCardColor;
+  //     }
+  //   }
+  //   if (selectedGender == Gender.female) {
+  //     if (femaleCardColor == inactiveCardColor) {
+  //       femaleCardColor = activeCardColor;
+  //       maleCardColor = inactiveCardColor;
+  //     } else {
+  //       femaleCardColor = inactiveCardColor;
+  //     }
+  //   }
+  //}
+  Gender? selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -55,36 +54,34 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
+                    child: ReusableCard(
+                      onPress: () {
                         setState(() {
-                          updateColor(1);
-                          print("clicked male");
+                          selectedGender = Gender.male;
                         });
                       },
-                      child: ReusableCard(
-                        color: maleCardColor,
-                        cardChild: const IconContent(
-                          iconName: FontAwesomeIcons.mars,
-                          iconText: 'MALE',
-                        ),
+                      color: selectedGender == Gender.male
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      cardChild: const IconContent(
+                        iconName: FontAwesomeIcons.mars,
+                        iconText: 'MALE',
                       ),
                     ),
                   ),
                   Expanded(
-                    child: GestureDetector(
-                      onTap: () {
+                    child: ReusableCard(
+                      onPress: () {
                         setState(() {
-                          updateColor(2);
-                          print("clicked female");
+                          selectedGender = Gender.female;
                         });
                       },
-                      child: ReusableCard(
-                        color: femaleCardColor,
-                        cardChild: const IconContent(
-                          iconName: FontAwesomeIcons.venus,
-                          iconText: 'FEMALE',
-                        ),
+                      color: selectedGender == Gender.female
+                          ? activeCardColor
+                          : inactiveCardColor,
+                      cardChild: const IconContent(
+                        iconName: FontAwesomeIcons.venus,
+                        iconText: 'FEMALE',
                       ),
                     ),
                   )
@@ -97,9 +94,7 @@ class _InputPageState extends State<InputPage> {
                 children: const [
                   Expanded(child: ReusableCard()),
                   Expanded(
-                    child: ReusableCard(
-                      color: Color(0xffeb3155ff),
-                    ),
+                    child: ReusableCard(),
                   ),
                 ],
               ),
