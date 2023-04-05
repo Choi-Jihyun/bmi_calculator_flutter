@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/icon_content.dart';
 import '../components/reusable_card.dart';
 import '../constants.dart';
-import 'results_page.dart';
 import '../components/bottom_button.dart';
 import '../components/round_icon_button.dart';
 import 'package:bmi_calculator_flutter/caculator_brain.dart';
@@ -102,7 +101,7 @@ class _InputPageState extends State<InputPage> {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'HEIGHT',
                     style: inactiveCardText,
                   ),
@@ -115,7 +114,7 @@ class _InputPageState extends State<InputPage> {
                         height.toString(),
                         style: kNumberTextStyle,
                       ),
-                      Text(' CM')
+                      const Text(' CM')
                     ],
                   ),
                   SliderTheme(
@@ -123,11 +122,11 @@ class _InputPageState extends State<InputPage> {
                       inactiveTrackColor: kInactiveColor,
                       activeTrackColor: Colors.white,
                       thumbColor: kBottomContainerColor,
-                      overlayColor: Color(0x29EB1555),
+                      overlayColor: const Color(0x29EB1555),
                       thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          const RoundSliderThumbShape(enabledThumbRadius: 15.0),
                       overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 30.0),
+                          const RoundSliderOverlayShape(overlayRadius: 30.0),
                     ),
                     child: Slider(
                         value: height.toDouble(),
@@ -151,7 +150,7 @@ class _InputPageState extends State<InputPage> {
                       cardChild: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             'WEIGHT',
                             style: kLabelTextStyle,
                           ),
@@ -170,7 +169,7 @@ class _InputPageState extends State<InputPage> {
                                   });
                                 },
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               RoundIconButton(
                                 icon: FontAwesomeIcons.plus,
                                 onPressed: () {
@@ -191,7 +190,7 @@ class _InputPageState extends State<InputPage> {
                       cardChild: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             'AGE',
                             style: kLabelTextStyle,
                           ),
@@ -210,7 +209,7 @@ class _InputPageState extends State<InputPage> {
                                   });
                                 },
                               ),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               RoundIconButton(
                                 icon: FontAwesomeIcons.plus,
                                 onPressed: () {

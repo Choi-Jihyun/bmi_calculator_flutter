@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
 
 class IconContent extends StatelessWidget {
   const IconContent(
-      {required this.iconName,
+      {super.key,
+      required this.iconName,
       required this.iconText,
       required this.iconTextStyle});
 

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class BottomButton extends StatelessWidget {
-  BottomButton({required this.onTap, required this.buttonTitle});
+  const BottomButton(
+      {super.key, required this.onTap, required this.buttonTitle});
   final VoidCallback onTap;
   final String buttonTitle;
 
@@ -12,15 +13,15 @@ class BottomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
+        color: kBottomContainerColor,
+        margin: const EdgeInsets.only(top: 10.0),
+        padding: const EdgeInsets.only(bottom: 15.0),
+        height: 80.0,
+        width: double.infinity,
         child: Text(
           buttonTitle,
           style: kLargeNumberTextStyle,
         ),
-        color: kBottomContainerColor,
-        margin: EdgeInsets.only(top: 10.0),
-        padding: EdgeInsets.only(bottom: 15.0),
-        height: 80.0,
-        width: double.infinity,
       ),
     );
   }
