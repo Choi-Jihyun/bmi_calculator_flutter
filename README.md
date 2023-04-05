@@ -1,6 +1,10 @@
 # bmi_calculator_flutter
 
 chapter12 Angela Yu
+<p align="left">
+  <img src="https://user-images.githubusercontent.com/61964114/230126142-3dedd65b-7c54-475d-a002-8205a022202b.gif" width="300">
+</p>
+
 
 ## Getting Started
 
